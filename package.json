@@ -1,0 +1,24 @@
+{
+  "name": "game-for-me-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marco3jp/GameForMeProject.git"
+  },
+  "author": "Marco",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Marco3jp/GameForMeProject/issues"
+  },
+  "homepage": "https://github.com/Marco3jp/GameForMeProject#readme",
+  "dependencies": {
+    "typescript": "4.6.3",
+    "esbuild": "0.14.34",
+    "pixi.js": "6.3.0"
+  }
+}
