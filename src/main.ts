@@ -1,4 +1,6 @@
 import * as PIXI from 'pixi.js'
+import {Ball} from "./component/ball";
+import {Bar} from "./component/bar";
 
 function main(){
     if (import.meta.env.DEV) {
@@ -19,6 +21,12 @@ function main(){
     })
 
     pixiApp.stage.addChild(pixiGreetingText)
+
+    const ball = new Ball();
+    const bar = new Bar();
+
+    pixiApp.stage.addChild(ball.instance)
+    pixiApp.stage.addChild(bar.instance)
 }
 
 main()
