@@ -1,16 +1,24 @@
 import * as PIXI from 'pixi.js'
 
-const root = document.querySelector<HTMLDivElement>('#app')!
-const pixiApp = new PIXI.Application({ width: 640, height: 360 })
+function main(){
+    if (import.meta.env.DEV) {
+        // @ts-ignore
+        window.__PIXI_INSPECTOR_GLOBAL_HOOK__ && window.__PIXI_INSPECTOR_GLOBAL_HOOK__.register({ PIXI: PIXI });
+    }
 
-root.innerHTML = `
-  <h1>Hello Vite x Pixi.js!</h1>
-`
+    const root = document.querySelector('#app')
+    if (!root) return
 
-root.appendChild(pixiApp.view)
+    const pixiApp = new PIXI.Application({ width: 640, height: 360 })
 
-const pixiGreetingText = new PIXI.Text("Hello, I'm Pixi.js", {
-    fill: "#4DB6AC"
-})
+    root.innerHTML = `<h1>Hello Vite x Pixi.js!</h1>`
+    root.appendChild(pixiApp.view)
 
-pixiApp.stage.addChild(pixiGreetingText)
+    const pixiGreetingText = new PIXI.Text("Hello, I'm Pixi.js", {
+        fill: "#4DB6AC"
+    })
+
+    pixiApp.stage.addChild(pixiGreetingText)
+}
+
+main()
