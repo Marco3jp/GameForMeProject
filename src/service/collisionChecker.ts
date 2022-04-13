@@ -11,8 +11,6 @@ export class CollisionChecker {
     collisionDetector: CollisionDetector
 
     constructor(input: CollisionCheckerInput) {
-        console.log(input.componentManager);
-
         this.componentManager = input.componentManager
         this.collisionDetector = new CollisionDetector()
         PIXI.Ticker.shared.add(() => {

@@ -5,8 +5,6 @@ export class CollisionDetector {
         const boundsRectangle1 = displayObject1.getBounds()
         const boundsRectangle2 = displayObject2.getBounds()
 
-        console.log(boundsRectangle1, boundsRectangle2)
-
         return CollisionDetector.checkCollisionXAxis(boundsRectangle1, boundsRectangle2) &&
             CollisionDetector.checkCollisionYAxis(boundsRectangle1, boundsRectangle2)
     }
