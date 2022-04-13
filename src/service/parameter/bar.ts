@@ -3,7 +3,9 @@ export const INITIAL_BAR: initial_bar = {
     Y: 300,
     WIDTH: 150,
     HEIGHT: 10,
-    COLOR: 0xffffff
+    COLOR: 0xffffff,
+    ANGLE: 270,
+    COLLISIONABLE: true
 }
 
 export type initial_bar = {
@@ -11,5 +13,7 @@ export type initial_bar = {
     Y: number,
     WIDTH: number,
     HEIGHT: number,
-    COLOR: number
+    COLOR: number,
+    ANGLE: number,
+    COLLISIONABLE: boolean
 }
