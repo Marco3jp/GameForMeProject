@@ -1,6 +1,8 @@
 import * as PIXI from 'pixi.js'
 import {Ball} from "./component/ball";
 import {Bar} from "./component/bar";
+import {ComponentManager} from "./service/componentManager";
+import {CollisionChecker} from "./service/collisionChecker";
 
 function main(){
     if (import.meta.env.DEV) {
@@ -20,13 +22,21 @@ function main(){
         fill: "#4DB6AC"
     })
 
+    const componentManager = new ComponentManager({
+        stage: pixiApp.stage
+    })
+
     pixiApp.stage.addChild(pixiGreetingText)
 
     const ball = new Ball();
     const bar = new Bar();
 
-    pixiApp.stage.addChild(ball.instance)
-    pixiApp.stage.addChild(bar.instance)
+    componentManager.add(ball)
+    componentManager.add(bar)
+
+    new CollisionChecker({
+        componentManager: componentManager
+    })
 }
 
 main()
