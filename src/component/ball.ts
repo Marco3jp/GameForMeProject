@@ -2,6 +2,7 @@ import * as PIXI from 'pixi.js';
 import {Graphics} from "pixi.js";
 import {initial_ball, INITIAL_BALL} from "../service/parameter/ball";
 import {Component} from "./component";
+import {Reflection} from "../service/reflection";
 
 // TODO: 汎用にする
 type Movement = {
@@ -34,8 +35,14 @@ export class Ball implements Component {
     }
 
     onCollision(collisionTarget: Component) {
-        if(!collisionTarget.instance) return
-        this.instance.angle += collisionTarget.instance.angle
+        if (!collisionTarget.instance) return
+        this.instance.angle = Reflection.calculateWithLine(
+            {
+                angle: this.instance.angle
+            }, {
+                angle: collisionTarget.instance.angle
+            }
+        )
     }
 
     // TODO: サービスに移動する
