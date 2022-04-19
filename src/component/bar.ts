@@ -8,7 +8,6 @@ export class Bar implements Component{
     instance: Graphics
 
     collisionable: boolean
-    angle: number
     speed?: number
 
     constructor(initial: initial_bar = INITIAL_BAR) {
@@ -16,9 +15,9 @@ export class Bar implements Component{
         this.instance.beginFill(initial.COLOR)
         this.instance.drawRect(initial.X, initial.Y, initial.WIDTH, initial.HEIGHT)
         this.instance.endFill()
+        this.instance.angle = initial.ANGLE
 
         this.collisionable = initial.COLLISIONABLE
-        this.angle = initial.ANGLE
         this.speed = undefined
     }
 

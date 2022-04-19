@@ -4,7 +4,7 @@ export const INITIAL_BAR: initial_bar = {
     WIDTH: 150,
     HEIGHT: 10,
     COLOR: 0xffffff,
-    ANGLE: 270,
+    ANGLE: 0,
     COLLISIONABLE: true
 }
 

@@ -9,26 +9,22 @@ type Movement = {
     y: number
 }
 
-export class Ball implements Component{
+export class Ball implements Component {
     instance: Graphics
 
     // TODO: 移動物は以下のパラメータ必ず持つのでcalculateMovingとか移動にあたって共通化する
     collisionable: boolean
     speed: number
-    angle: number
 
     constructor(initial: initial_ball = INITIAL_BALL) {
         this.instance = new PIXI.Graphics()
         this.instance.beginFill(initial.COLOR)
         this.instance.drawCircle(initial.X, initial.Y, initial.RADIUS)
         this.instance.endFill()
+        this.instance.angle = initial.ANGLE
 
         this.collisionable = initial.COLLISIONABLE
         this.speed = initial.SPEED
-        this.angle = initial.ANGLE
-
-        // TODO: 角度をdisplayObjectが持っているものと共通化する
-        // this.instance.angle = this.angle
 
         PIXI.Ticker.shared.add(()=> {
             const moving = this.calculateMoving()
@@ -38,12 +34,13 @@ export class Ball implements Component{
     }
 
     onCollision(collisionTarget: Component) {
-        this.angle += collisionTarget.angle
+        if(!collisionTarget.instance) return
+        this.instance.angle += collisionTarget.instance.angle
     }
 
     // TODO: サービスに移動する
     calculateMoving(): Movement {
-        const radian = this.angle * Math.PI / 180
+        const radian = this.instance.rotation
         const unitCircleX = Math.cos(radian)
         const unitCircleY = Math.sin(radian)
 
