@@ -15,6 +15,7 @@ export class Reflection {
         // ReflectiveAngleが負にならないように、一旦360を加算してから壁の角度を引いて、その上で超えている部分は弾く
         const correctedReflectiveAngle = ((reflective.angle + 360) - wall.angle) % 360
 
+        // TODO: 条件は一旦わかりやすさのために分割しているので、まとめられそうならまとめてみる
         if (correctedReflectiveAngle >= 0 && 90 > correctedReflectiveAngle) {
             // 左上から右上に反射するパターン
             return (360 - correctedReflectiveAngle + wall.angle) % 360
