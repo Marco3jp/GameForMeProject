@@ -1,9 +1,9 @@
 export const INITIAL_BALL: initial_ball = {
-    X: 34,
-    Y: 47,
+    X: 124,
+    Y: 235,
     RADIUS: 5,
     COLOR: 0xffffff,
-    SPEED: 2,
+    SPEED: 5,
     ANGLE: 40,
     COLLISIONABLE: true
 }
