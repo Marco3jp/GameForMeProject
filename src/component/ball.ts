@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js';
 import {Graphics} from "pixi.js";
 import {initial_ball, INITIAL_BALL} from "../service/parameter/ball";
 import {Component} from "./component";
-import {Reflection} from "../service/reflection";
+import {Service} from "./service/service";
 
 // TODO: 汎用にする
 type Movement = {
@@ -17,7 +17,11 @@ export class Ball implements Component {
     collisionable: boolean
     speed: number
 
-    constructor(initial: initial_ball = INITIAL_BALL) {
+    service: Service
+
+    constructor(service: Service, initial: initial_ball = INITIAL_BALL) {
+        this.service = service
+
         this.instance = new PIXI.Graphics()
         this.instance.beginFill(initial.COLOR)
         this.instance.drawCircle(0, 0, initial.RADIUS)
@@ -37,7 +41,7 @@ export class Ball implements Component {
 
     onCollision(collisionTarget: Component) {
         if (!collisionTarget.instance) return
-        this.instance.angle = Reflection.calculateWithLine(
+        this.instance.angle = this.service.reflection.calculateWithLine(
             {
                 angle: this.instance.angle
             }, {

@@ -1,16 +1,14 @@
-export type reflectionInput = {
-    angle: number
-}
+import {reflectionInput, ReflectionInterface} from "../component/service/reflection";
 
 /**
  * 反射を管理するサービス
  */
-export class Reflection {
+export class Reflection implements ReflectionInterface{
     /**
      * 直線に対する反射を計算する
      * @return {number} 反射角を返す
      */
-    public static calculateWithLine(reflective: reflectionInput, wall: reflectionInput): number {
+    public calculateWithLine(reflective: reflectionInput, wall: reflectionInput): number {
         // 壁を常に0度とみなす考え方
         // ReflectiveAngleが負にならないように、一旦360を加算してから壁の角度を引いて、その上で超えている部分は弾く
         const correctedReflectiveAngle = ((reflective.angle + 360) - wall.angle) % 360

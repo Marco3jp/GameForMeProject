@@ -5,6 +5,8 @@ import {ComponentManager} from "./service/componentManager";
 import {CollisionChecker} from "./service/collisionChecker";
 import {GameGuardian} from "./service/GameGuardian";
 import {SimpleStage} from "./component/stage/simpleStage/simpleStage";
+import {Service} from "./component/service/service";
+import {Reflection} from "./service/reflection";
 
 function main() {
     if (import.meta.env.DEV) {
@@ -15,15 +17,19 @@ function main() {
     const root = document.querySelector('#app')
     if (!root) return
 
-    const pixiApp = new PIXI.Application({width: 640, height: 360})
+    const pixiApp = new PIXI.Application({width: 1000, height: 750})
     root.appendChild(pixiApp.view)
 
     const componentManager = new ComponentManager({
         stage: pixiApp.stage
     })
 
-    const ball = new Ball();
-    const bar = new Bar();
+    const service: Service = {
+        reflection: new Reflection()
+    }
+
+    const ball = new Ball(service);
+    const bar = new Bar(service);
 
     componentManager.add(ball)
     componentManager.add(bar)
