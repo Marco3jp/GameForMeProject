@@ -36,6 +36,8 @@ function main() {
     componentManager.add(ball)
     componentManager.add(bar)
 
+    // TODO: ステージのパーツをcomponentManagerに乗せるため、componentの型を使わずにinstancesを持つようにしている
+    //  独自になっていて微妙なので、パーツをグループ化する仕組みを考えて適用したい
     const stage = new SimpleStage()
     stage.components.forEach(component => {
         componentManager.add(component)
