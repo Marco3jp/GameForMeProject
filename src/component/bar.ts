@@ -13,12 +13,13 @@ export class Bar implements Component{
     constructor(initial: initial_bar = INITIAL_BAR) {
         this.instance = new PIXI.Graphics()
         this.instance.beginFill(initial.COLOR)
-        this.instance.drawRect(initial.X, initial.Y, initial.WIDTH, initial.HEIGHT)
+        this.instance.drawRect(0, 0, initial.WIDTH, initial.HEIGHT)
         this.instance.endFill()
+        this.instance.setTransform(initial.X, initial.Y)
         this.instance.angle = initial.ANGLE
 
         this.collisionable = initial.COLLISIONABLE
-        this.speed = undefined
+        this.speed = undefined // TODO: 操作系を実装するときにここ入れる（はず）
     }
 
     onCollision(_: Component): void {}

@@ -20,8 +20,9 @@ export class Ball implements Component {
     constructor(initial: initial_ball = INITIAL_BALL) {
         this.instance = new PIXI.Graphics()
         this.instance.beginFill(initial.COLOR)
-        this.instance.drawCircle(initial.X, initial.Y, initial.RADIUS)
+        this.instance.drawCircle(0, 0, initial.RADIUS)
         this.instance.endFill()
+        this.instance.setTransform(initial.X, initial.Y)
         this.instance.angle = initial.ANGLE
 
         this.collisionable = initial.COLLISIONABLE

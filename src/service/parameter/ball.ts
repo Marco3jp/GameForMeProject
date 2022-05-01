@@ -1,10 +1,10 @@
 export const INITIAL_BALL: initial_ball = {
-    X: 5,
-    Y: 5,
+    X: 34,
+    Y: 47,
     RADIUS: 5,
     COLOR: 0xffffff,
-    SPEED: 1,
-    ANGLE: 45,
+    SPEED: 2,
+    ANGLE: 40,
     COLLISIONABLE: true
 }
 
