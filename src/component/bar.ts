@@ -8,7 +8,6 @@ import {Service} from "./service/service";
 export class Bar implements Component{
     instance: Graphics
 
-    collisionable: boolean
     speed?: number
 
     service: Service
@@ -23,7 +22,6 @@ export class Bar implements Component{
         this.instance.setTransform(initial.X, initial.Y)
         this.instance.angle = initial.ANGLE
 
-        this.collisionable = initial.COLLISIONABLE
         this.speed = undefined // TODO: 操作系を実装するときにここ入れる（はず）
     }
 

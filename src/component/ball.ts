@@ -7,8 +7,6 @@ import {Service} from "./service/service";
 export class Ball implements Component {
     instance: Graphics
 
-    // TODO: 移動物は以下のパラメータ必ず持つのでcalculateMovingとか移動にあたって共通化する
-    collisionable: boolean
     speed: number
 
     service: Service
@@ -23,7 +21,6 @@ export class Ball implements Component {
         this.instance.setTransform(initial.X, initial.Y)
         this.instance.angle = initial.ANGLE
 
-        this.collisionable = initial.COLLISIONABLE
         this.speed = initial.SPEED
 
         PIXI.Ticker.shared.add(()=> {

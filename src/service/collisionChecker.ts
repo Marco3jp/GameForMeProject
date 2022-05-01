@@ -19,14 +19,16 @@ export class CollisionChecker {
     }
 
     onTick() {
-        const collisionableComponents = this.componentManager.list.filter(component => component.collisionable)
+        const collisionableComponents = this.componentManager.list.filter(component => component.onCollision)
         for (let i = 0; i < collisionableComponents.length; i++) {
             for (let j = i + 1; j < collisionableComponents.length; j++) {
                 const component1 = collisionableComponents[i];
                 const component2 = collisionableComponents[j];
 
                 if (component1.instance &&
+                    component1.onCollision &&
                     component2.instance &&
+                    component2.onCollision &&
                     this.collisionDetector.checkCollision(
                         component1.instance, component2.instance
                     )

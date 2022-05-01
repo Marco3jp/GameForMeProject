@@ -5,7 +5,6 @@ export const INITIAL_BAR: initial_bar = {
     HEIGHT: 10,
     COLOR: 0xffffff,
     ANGLE: 0,
-    COLLISIONABLE: true
 }
 
 export type initial_bar = {
@@ -15,5 +14,4 @@ export type initial_bar = {
     HEIGHT: number,
     COLOR: number,
     ANGLE: number,
-    COLLISIONABLE: boolean
 }

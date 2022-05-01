@@ -5,7 +5,6 @@ export const INITIAL_BALL: initial_ball = {
     COLOR: 0xffffff,
     SPEED: 5,
     ANGLE: 40,
-    COLLISIONABLE: true
 }
 
 export type initial_ball = {
@@ -15,5 +14,4 @@ export type initial_ball = {
     COLOR: number,
     SPEED: number,
     ANGLE: number,
-    COLLISIONABLE: boolean
 }

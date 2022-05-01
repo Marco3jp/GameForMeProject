@@ -6,7 +6,6 @@ import {initial_simple_wall} from "../../../service/parameter/simpleWall";
 export class SimpleWall implements Component{
     instance: Graphics
 
-    collisionable: boolean
     speed?: number
 
     constructor(initial: initial_simple_wall) {
@@ -17,7 +16,6 @@ export class SimpleWall implements Component{
         this.instance.setTransform(initial.X, initial.Y)
         this.instance.angle = initial.ANGLE
 
-        this.collisionable = initial.COLLISIONABLE
         this.speed = undefined
     }
 
