@@ -4,24 +4,19 @@ import {Bar} from "./component/bar";
 import {ComponentManager} from "./service/componentManager";
 import {CollisionChecker} from "./service/collisionChecker";
 import {GameGuardian} from "./service/GameGuardian";
+import {SimpleStage} from "./component/stage/simpleStage/simpleStage";
 
-function main(){
+function main() {
     if (import.meta.env.DEV) {
         // @ts-ignore
-        window.__PIXI_INSPECTOR_GLOBAL_HOOK__ && window.__PIXI_INSPECTOR_GLOBAL_HOOK__.register({ PIXI: PIXI });
+        window.__PIXI_INSPECTOR_GLOBAL_HOOK__ && window.__PIXI_INSPECTOR_GLOBAL_HOOK__.register({PIXI: PIXI});
     }
 
     const root = document.querySelector('#app')
     if (!root) return
 
-    const pixiApp = new PIXI.Application({ width: 640, height: 360 })
+    const pixiApp = new PIXI.Application({width: 640, height: 360})
     root.appendChild(pixiApp.view)
-
-    const pixiGreetingText = new PIXI.Text("Hello, I'm Pixi.js", {
-        fill: "#4DB6AC"
-    })
-
-    pixiApp.stage.addChild(pixiGreetingText)
 
     const componentManager = new ComponentManager({
         stage: pixiApp.stage
@@ -32,6 +27,11 @@ function main(){
 
     componentManager.add(ball)
     componentManager.add(bar)
+
+    const stage = new SimpleStage()
+    stage.components.forEach(component => {
+        componentManager.add(component)
+    })
 
     new CollisionChecker({
         componentManager: componentManager
@@ -46,7 +46,7 @@ function initGameGuardian() {
         pauseButton.addEventListener("click", GameGuardian.pause)
     }
 
-    if(resumeButton) {
+    if (resumeButton) {
         resumeButton.addEventListener("click", GameGuardian.resume)
     }
 }
