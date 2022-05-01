@@ -38,7 +38,7 @@ function main(){
     })
 }
 
-function initGameGuradian() {
+function initGameGuardian() {
     const pauseButton = document.querySelector("#pause-button")
     const resumeButton = document.querySelector("#resume-button")
 
@@ -52,4 +52,4 @@ function initGameGuradian() {
 }
 
 main()
-initGameGuradian()
+initGameGuardian()
