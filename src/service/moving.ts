@@ -10,9 +10,10 @@ export class Moving implements MovingInterface {
         component.instance.y += moving.y
     }
 
+    // TODO: この移動は慣性移動であって、すべての移動を司るわけではないので名前を直したほうがいいかも
     calculateMovement(component: Component): Movement {
         if (!component.instance || !component.speed) {
-            //
+            // 本来考慮されていないので throw していいかも
             return {
                 x: 0,
                 y: 0
