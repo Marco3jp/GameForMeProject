@@ -15,36 +15,36 @@ export class SimpleStage {
             COLOR: 0xF44336,
             ANGLE: 0,
             HEIGHT: 10,
-            WIDTH: 300,
-            X: 0,
-            Y: 0
+            WIDTH: 950,
+            X: 25,
+            Y: 25
         })
         const wall2 = new SimpleWall({
             ...INITIAL_SIMPLE_WALL,
             COLOR: 0x2196F3,
             ANGLE: 90,
             HEIGHT: 10,
-            WIDTH: 300,
-            X: 300,
-            Y: 0
+            WIDTH: 700,
+            X: 975,
+            Y: 25
         })
         const wall3 = new SimpleWall({
             ...INITIAL_SIMPLE_WALL,
             COLOR: 0x4CAF50,
             ANGLE: 180,
             HEIGHT: 10,
-            WIDTH: 300,
-            X: 300,
-            Y: 300
+            WIDTH: 950,
+            X: 975,
+            Y: 725
         })
         const wall4 = new SimpleWall({
             ...INITIAL_SIMPLE_WALL,
             COLOR: 0xFFEB3B,
             ANGLE: 270,
             HEIGHT: 10,
-            WIDTH: 300,
-            X: 0,
-            Y: 300
+            WIDTH: 700,
+            X: 25,
+            Y: 725
         })
 
         this.components = [wall1, wall2, wall3, wall4]
