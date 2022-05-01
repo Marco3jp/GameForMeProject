@@ -7,6 +7,7 @@ import {GameGuardian} from "./service/GameGuardian";
 import {SimpleStage} from "./component/stage/simpleStage/simpleStage";
 import {Service} from "./component/service/service";
 import {Reflection} from "./service/reflection";
+import {Moving} from "./service/moving";
 
 function main() {
     if (import.meta.env.DEV) {
@@ -25,7 +26,8 @@ function main() {
     })
 
     const service: Service = {
-        reflection: new Reflection()
+        reflection: new Reflection(),
+        moving: new Moving()
     }
 
     const ball = new Ball(service);

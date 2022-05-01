@@ -4,12 +4,6 @@ import {initial_ball, INITIAL_BALL} from "../service/parameter/ball";
 import {Component} from "./component";
 import {Service} from "./service/service";
 
-// TODO: 汎用にする
-type Movement = {
-    x: number,
-    y: number
-}
-
 export class Ball implements Component {
     instance: Graphics
 
@@ -33,9 +27,7 @@ export class Ball implements Component {
         this.speed = initial.SPEED
 
         PIXI.Ticker.shared.add(()=> {
-            const moving = this.calculateMoving()
-            this.instance.x += moving.x
-            this.instance.y += moving.y
+            this.service.moving.move(this)
         })
     }
 
@@ -48,17 +40,5 @@ export class Ball implements Component {
                 angle: collisionTarget.instance.angle
             }
         )
-    }
-
-    // TODO: サービスに移動する
-    calculateMoving(): Movement {
-        const radian = this.instance.rotation
-        const unitCircleX = Math.cos(radian)
-        const unitCircleY = Math.sin(radian)
-
-        return {
-            x: unitCircleX * this.speed,
-            y: unitCircleY * this.speed
-        }
     }
 }
