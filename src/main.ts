@@ -3,6 +3,7 @@ import {Ball} from "./component/ball";
 import {Bar} from "./component/bar";
 import {ComponentManager} from "./service/componentManager";
 import {CollisionChecker} from "./service/collisionChecker";
+import {GameGuardian} from "./service/GameGuardian";
 
 function main(){
     if (import.meta.env.DEV) {
@@ -14,19 +15,17 @@ function main(){
     if (!root) return
 
     const pixiApp = new PIXI.Application({ width: 640, height: 360 })
-
-    root.innerHTML = `<h1>Hello Vite x Pixi.js!</h1>`
     root.appendChild(pixiApp.view)
 
     const pixiGreetingText = new PIXI.Text("Hello, I'm Pixi.js", {
         fill: "#4DB6AC"
     })
 
+    pixiApp.stage.addChild(pixiGreetingText)
+
     const componentManager = new ComponentManager({
         stage: pixiApp.stage
     })
-
-    pixiApp.stage.addChild(pixiGreetingText)
 
     const ball = new Ball();
     const bar = new Bar();
@@ -39,4 +38,18 @@ function main(){
     })
 }
 
+function initGameGuradian() {
+    const pauseButton = document.querySelector("#pause-button")
+    const resumeButton = document.querySelector("#resume-button")
+
+    if (pauseButton) {
+        pauseButton.addEventListener("click", GameGuardian.pause)
+    }
+
+    if(resumeButton) {
+        resumeButton.addEventListener("click", GameGuardian.resume)
+    }
+}
+
 main()
+initGameGuradian()
