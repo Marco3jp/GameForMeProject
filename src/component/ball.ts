@@ -16,6 +16,7 @@ export class Ball implements Component {
 
         this.instance = new PIXI.Graphics()
         this.instance.beginFill(initial.COLOR)
+        // FIXME: x, yは中心らしいので、当たり判定に違和感ありそうで直したい
         this.instance.drawCircle(0, 0, initial.RADIUS)
         this.instance.endFill()
         this.instance.setTransform(initial.X, initial.Y)
