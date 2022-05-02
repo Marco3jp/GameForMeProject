@@ -8,6 +8,9 @@ import {SimpleStage} from "./component/stage/simpleStage/simpleStage";
 import {Service} from "./component/service/service";
 import {Reflection} from "./service/reflection";
 import {Moving} from "./service/moving";
+import {INITIAL_APP} from "./service/parameter/app";
+import {BarControllerPositionNotifier} from "./service/barControllerPositionNotifier";
+import {BarMoving} from "./service/barMoving";
 
 function main() {
     if (import.meta.env.DEV) {
@@ -18,7 +21,10 @@ function main() {
     const root = document.querySelector('#app')
     if (!root) return
 
-    const pixiApp = new PIXI.Application({width: 1000, height: 750})
+    const pixiApp = new PIXI.Application({
+        width: INITIAL_APP.canvasWidth,
+        height: INITIAL_APP.canvasHeight
+    })
     root.appendChild(pixiApp.view)
 
     const componentManager = new ComponentManager({
@@ -27,7 +33,8 @@ function main() {
 
     const service: Service = {
         reflection: new Reflection(),
-        moving: new Moving()
+        moving: new Moving(),
+        barMoving: new BarMoving()
     }
 
     const ball = new Ball(service);
@@ -38,13 +45,17 @@ function main() {
 
     // TODO: ステージのパーツをcomponentManagerに乗せるため、componentの型を使わずにinstancesを持つようにしている
     //  独自になっていて微妙なので、パーツをグループ化する仕組みを考えて適用したい
-    const stage = new SimpleStage()
-    stage.components.forEach(component => {
+    const simpleStage = new SimpleStage()
+    simpleStage.components.forEach(component => {
         componentManager.add(component)
     })
 
     new CollisionChecker({
         componentManager: componentManager
+    })
+
+    new BarControllerPositionNotifier({
+        componentManager, stage: pixiApp.stage
     })
 }
 

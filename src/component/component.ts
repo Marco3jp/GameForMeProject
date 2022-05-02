@@ -1,4 +1,5 @@
 import {DisplayObject} from "pixi.js";
+import {onMouseMoveEvent} from "./service/barControllerPositionNotifier";
 
 export interface Component {
     instance: DisplayObject | null
@@ -6,4 +7,6 @@ export interface Component {
     speed?: number
 
     onCollision?: (collisionTarget: Component) => void
+
+    onChangeControllerPosition?: (controllerPosition: onMouseMoveEvent) => void
 }

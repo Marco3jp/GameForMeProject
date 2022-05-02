@@ -3,7 +3,7 @@ import {Graphics} from "pixi.js";
 import {initial_bar, INITIAL_BAR} from "../service/parameter/bar";
 import {Component} from "./component";
 import {Service} from "./service/service";
-
+import {onMouseMoveEvent} from "./service/barControllerPositionNotifier";
 
 export class Bar implements Component{
     instance: Graphics
@@ -26,4 +26,8 @@ export class Bar implements Component{
     }
 
     onCollision(_: Component): void {}
+
+    onChangeControllerPosition(event: onMouseMoveEvent) {
+        this.service.barMoving.move(this, event)
+    }
 }
