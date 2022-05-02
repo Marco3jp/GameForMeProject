@@ -7,5 +7,4 @@ export type Movement = {
 
 export interface MovingInterface {
     move(component: Component): void
-    calculateMovement(component: Component): Movement
 }
