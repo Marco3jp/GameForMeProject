@@ -1,6 +1,6 @@
 export const INITIAL_BAR: initial_bar = {
     X: 245,
-    Y: 300,
+    Y: 600,
     WIDTH: 150,
     HEIGHT: 10,
     COLOR: 0xffffff,
