@@ -12,6 +12,8 @@ export class SimpleWall implements Component{
 
     componentName: ComponentName
 
+    isBlockBreaker: boolean
+
     speed?: number
 
     constructor(initial: initial_simple_wall) {
@@ -23,6 +25,8 @@ export class SimpleWall implements Component{
         this.instance.angle = initial.ANGLE
 
         this.componentName = SimpleWallComponentName
+
+        this.isBlockBreaker = false
 
         this.speed = undefined
     }

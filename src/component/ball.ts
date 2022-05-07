@@ -9,6 +9,8 @@ export const BallComponentName: ComponentName = "Ball"
 export class Ball implements Component {
     instance: Graphics
 
+    isBlockBreaker: boolean
+
     componentName: ComponentName;
 
     speed: number
@@ -29,6 +31,8 @@ export class Ball implements Component {
         this.componentName = BallComponentName
 
         this.speed = initial.SPEED
+
+        this.isBlockBreaker = true
 
         PIXI.Ticker.shared.add(()=> {
             this.service.moving.move(this)

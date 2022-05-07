@@ -12,6 +12,8 @@ export class Bar implements Component{
 
     componentName: ComponentName
 
+    isBlockBreaker: boolean
+
     speed?: number
 
     service: Service
@@ -27,6 +29,8 @@ export class Bar implements Component{
         this.instance.angle = initial.ANGLE
 
         this.componentName = BarComponentName
+
+        this.isBlockBreaker = false
 
         this.speed = undefined // TODO: 操作系を実装するときにここ入れる（はず）
     }

@@ -3,7 +3,7 @@ export const INITIAL_BALL: initial_ball = {
     Y: 235,
     RADIUS: 5,
     COLOR: 0xffffff,
-    SPEED: 5,
+    SPEED: 8,
     ANGLE: 40,
 }
 

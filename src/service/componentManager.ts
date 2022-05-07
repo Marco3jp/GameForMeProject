@@ -1,11 +1,12 @@
 import {Component} from "../component/component";
 import {Container} from "@pixi/display";
+import {ComponentManagerInterface} from "../component/service/componentManager";
 
 type ComponentManagerInput = {
     stage: Container
 }
 
-export class ComponentManager {
+export class ComponentManager implements ComponentManagerInterface{
     private stage: Container
     private components: Component[]
 
