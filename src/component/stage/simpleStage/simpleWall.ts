@@ -1,10 +1,16 @@
 import * as PIXI from 'pixi.js';
 import {Graphics} from "pixi.js";
-import {Component} from "../../component";
+import {Component, ComponentName} from "../../component";
 import {initial_simple_wall} from "../../../service/parameter/simpleWall";
+
+// なんかこれ別名というか、汎用名と固有名がほしい気がする
+// ステージが変わっても壁としての本質は変わらなさそう
+export const SimpleWallComponentName: ComponentName = "SimpleWall"
 
 export class SimpleWall implements Component{
     instance: Graphics
+
+    componentName: ComponentName
 
     speed?: number
 
@@ -15,6 +21,8 @@ export class SimpleWall implements Component{
         this.instance.endFill()
         this.instance.setTransform(initial.X, initial.Y)
         this.instance.angle = initial.ANGLE
+
+        this.componentName = SimpleWallComponentName
 
         this.speed = undefined
     }

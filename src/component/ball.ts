@@ -1,11 +1,15 @@
 import * as PIXI from 'pixi.js';
 import {Graphics} from "pixi.js";
 import {initial_ball, INITIAL_BALL} from "../service/parameter/ball";
-import {Component} from "./component";
+import {Component, ComponentName} from "./component";
 import {Service} from "./service/service";
+
+export const BallComponentName: ComponentName = "Ball"
 
 export class Ball implements Component {
     instance: Graphics
+
+    componentName: ComponentName;
 
     speed: number
 
@@ -21,6 +25,8 @@ export class Ball implements Component {
         this.instance.endFill()
         this.instance.setTransform(initial.X, initial.Y)
         this.instance.angle = initial.ANGLE
+
+        this.componentName = BallComponentName
 
         this.speed = initial.SPEED
 

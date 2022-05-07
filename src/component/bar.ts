@@ -1,12 +1,16 @@
 import * as PIXI from 'pixi.js';
 import {Graphics} from "pixi.js";
 import {initial_bar, INITIAL_BAR} from "../service/parameter/bar";
-import {Component} from "./component";
+import {Component, ComponentName} from "./component";
 import {Service} from "./service/service";
 import {onMouseMoveEvent} from "./service/barControllerPositionNotifier";
 
+export const BarComponentName: ComponentName = "Bar"
+
 export class Bar implements Component{
     instance: Graphics
+
+    componentName: ComponentName
 
     speed?: number
 
@@ -21,6 +25,8 @@ export class Bar implements Component{
         this.instance.endFill()
         this.instance.setTransform(initial.X, initial.Y)
         this.instance.angle = initial.ANGLE
+
+        this.componentName = BarComponentName
 
         this.speed = undefined // TODO: 操作系を実装するときにここ入れる（はず）
     }
