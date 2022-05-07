@@ -82,19 +82,19 @@ function initGameGuardian() {
 
 function initSpawnBlocks(service: Service) {
     const block1 = new Block(service, INITIAL_BLOCK, {
-        x: 150 + 100, // 150 is component width
+        x: 100,
         y: 100,
     })
     const block2 = new Block(service, INITIAL_BLOCK, {
-        x: 150 + 300,
+        x: 300,
         y: 100,
     })
     const block3 = new Block(service, INITIAL_BLOCK, {
-        x: 150 + 500,
+        x: 500,
         y: 100,
     })
     const block4 = new Block(service, INITIAL_BLOCK, {
-        x: 150 + 700,
+        x: 700,
         y: 100,
     })
 
