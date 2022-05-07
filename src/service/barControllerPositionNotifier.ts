@@ -18,7 +18,6 @@ export class BarControllerPositionNotifier {
         input.stage.on("mousemove", (event: InteractionEvent) => {
             const targetComponents = input.componentManager.list.filter(component => component.onChangeControllerPosition)
             targetComponents.forEach(component => {
-                console.log(event)
                 if (component.onChangeControllerPosition) {
                     component.onChangeControllerPosition({
                         clientX: event.data.global.x
