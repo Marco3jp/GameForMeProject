@@ -13,6 +13,13 @@ export interface Component {
     // 例えば攻撃的な投射物として持つとか、破壊できるモノを持つとか、このままで他に破壊できるものができるなら別々の属性として持つとか
     isBlockBreaker: boolean
 
+    /**
+     * @description directionOfMovement set and get by the angle.
+     * TODO: 『動かない状態』が、speed: 0とか、componentのconstructorでTickerに登録するか否かとごちゃごちゃしているので整理したい
+     *   こいつも関係があるけど、一旦それと切り離したいので、適当に0とか登録することにする
+     */
+    directionOfMovement: number
+
     speed?: number
 
     onCollision?: (collisionTarget: Component) => void

@@ -11,6 +11,7 @@ export class Block implements Component {
     instance: Graphics
     isBlockBreaker: boolean
     service: Service
+    directionOfMovement: number
 
     // FIXME: 超暫定でここで座標を指定しているものの、適切に配置するためのサービスが必要な気がする
     constructor(service: Service, initial: initial_block = INITIAL_BLOCK, location: { x: number, y: number }) {
@@ -29,6 +30,8 @@ export class Block implements Component {
         this.isBlockBreaker = false
 
         this.speed = initial.SPEED
+
+        this.directionOfMovement = initial.DIRECTION_OF_MOVEMENT
 
         PIXI.Ticker.shared.add(()=> {
             this.service.moving.move(this)

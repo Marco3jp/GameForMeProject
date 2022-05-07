@@ -17,7 +17,8 @@ export class SimpleStage {
             HEIGHT: 10,
             WIDTH: 950,
             X: 25,
-            Y: 25
+            Y: 25,
+            DIRECTION_OF_MOVEMENT: 0
         })
         const wall2 = new SimpleWall({
             ...INITIAL_SIMPLE_WALL,
@@ -26,7 +27,8 @@ export class SimpleStage {
             HEIGHT: 10,
             WIDTH: 700,
             X: 975,
-            Y: 25
+            Y: 25,
+            DIRECTION_OF_MOVEMENT: 0
         })
         const wall3 = new SimpleWall({
             ...INITIAL_SIMPLE_WALL,
@@ -35,7 +37,8 @@ export class SimpleStage {
             HEIGHT: 10,
             WIDTH: 950,
             X: 975,
-            Y: 725
+            Y: 725,
+            DIRECTION_OF_MOVEMENT: 0
         })
         const wall4 = new SimpleWall({
             ...INITIAL_SIMPLE_WALL,
@@ -44,7 +47,8 @@ export class SimpleStage {
             HEIGHT: 10,
             WIDTH: 700,
             X: 25,
-            Y: 725
+            Y: 725,
+            DIRECTION_OF_MOVEMENT: 0
         })
 
         this.components = [wall1, wall2, wall3, wall4]

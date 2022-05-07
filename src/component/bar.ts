@@ -18,6 +18,8 @@ export class Bar implements Component{
 
     service: Service
 
+    directionOfMovement: number
+
     constructor(service: Service, initial: initial_bar = INITIAL_BAR) {
         this.service = service
 
@@ -33,6 +35,8 @@ export class Bar implements Component{
         this.isBlockBreaker = false
 
         this.speed = undefined // TODO: 操作系を実装するときにここ入れる（はず）
+
+        this.directionOfMovement = initial.DIRECTION_OF_MOVEMENT
     }
 
     onCollision(_: Component): void {}

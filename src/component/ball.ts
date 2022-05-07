@@ -17,6 +17,8 @@ export class Ball implements Component {
 
     service: Service
 
+    directionOfMovement: number
+
     constructor(service: Service, initial: initial_ball = INITIAL_BALL) {
         this.service = service
 
@@ -34,6 +36,8 @@ export class Ball implements Component {
 
         this.isBlockBreaker = true
 
+        this.directionOfMovement = initial.DIRECTION_OF_MOVEMENT
+
         PIXI.Ticker.shared.add(()=> {
             this.service.moving.move(this)
         })
@@ -41,9 +45,9 @@ export class Ball implements Component {
 
     onCollision(collisionTarget: Component) {
         if (!collisionTarget.instance) return
-        this.instance.angle = this.service.reflection.calculateWithLine(
+        this.directionOfMovement = this.service.reflection.calculateWithLine(
             {
-                angle: this.instance.angle
+                angle: this.directionOfMovement
             }, {
                 angle: collisionTarget.instance.angle
             }

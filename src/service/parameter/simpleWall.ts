@@ -9,4 +9,5 @@ export type initial_simple_wall = {
     HEIGHT: number,
     COLOR: number,
     ANGLE: number,
+    DIRECTION_OF_MOVEMENT: number
 }

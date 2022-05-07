@@ -16,6 +16,8 @@ export class SimpleWall implements Component{
 
     speed?: number
 
+    directionOfMovement: number;
+
     constructor(initial: initial_simple_wall) {
         this.instance = new PIXI.Graphics()
         this.instance.beginFill(initial.COLOR)
@@ -29,7 +31,10 @@ export class SimpleWall implements Component{
         this.isBlockBreaker = false
 
         this.speed = undefined
+
+        this.directionOfMovement = initial.DIRECTION_OF_MOVEMENT
     }
 
     onCollision(_: Component): void {}
+
 }

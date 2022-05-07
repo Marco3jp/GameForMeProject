@@ -20,7 +20,7 @@ export class Moving implements MovingInterface {
             }
         }
 
-        const radian = component.instance.rotation
+        const radian = component.directionOfMovement * Math.PI / 180
         const unitCircleX = Math.cos(radian)
         const unitCircleY = Math.sin(radian)
 

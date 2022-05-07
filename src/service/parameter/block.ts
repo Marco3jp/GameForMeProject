@@ -1,9 +1,10 @@
 export const INITIAL_BLOCK: initial_block = {
-    WIDTH: 30,
-    HEIGHT: 150,
+    WIDTH: 150,
+    HEIGHT: 30,
     COLOR: 0xffffff,
-    ANGLE: 90,
-    SPEED: 0.5
+    ANGLE: 0,
+    SPEED: 0.5,
+    DIRECTION_OF_MOVEMENT: 90
 }
 
 export type initial_block = {
@@ -11,5 +12,6 @@ export type initial_block = {
     HEIGHT: number,
     COLOR: number,
     ANGLE: number,
-    SPEED: number
+    SPEED: number,
+    DIRECTION_OF_MOVEMENT: number
 }
