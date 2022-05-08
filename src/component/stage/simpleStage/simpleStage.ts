@@ -12,6 +12,7 @@ export const CANVAS_PADDING = {
 };
 export const WALL_THICKNESS = 10;
 
+// TODO: これ壁の厚さを含めたサイズなので明示したほうが良さそう
 export const STAGE_SIZE = {
     X: INITIAL_APP.canvasWidth - CANVAS_PADDING.X * 2,
     Y: INITIAL_APP.canvasHeight - CANVAS_PADDING.Y * 2,

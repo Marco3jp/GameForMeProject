@@ -11,8 +11,7 @@ import {Moving} from "./service/moving";
 import {INITIAL_APP} from "./service/parameter/app";
 import {BarControllerPositionNotifier} from "./service/barControllerPositionNotifier";
 import {BarMoving} from "./service/barMoving";
-import {Block} from "./component/block";
-import {INITIAL_BLOCK} from "./service/parameter/block";
+import {BlockSpawn} from "./service/blockSpawn";
 
 function main() {
     if (import.meta.env.DEV) {
@@ -53,10 +52,7 @@ function main() {
         componentManager.add(component)
     })
 
-    const blocks = initSpawnBlocks(service)
-    blocks.forEach(block => {
-        componentManager.add(block)
-    })
+    new BlockSpawn(service)
 
     new CollisionChecker({
         componentManager: componentManager
@@ -78,27 +74,6 @@ function initGameGuardian() {
     if (resumeButton) {
         resumeButton.addEventListener("click", GameGuardian.resume)
     }
-}
-
-function initSpawnBlocks(service: Service) {
-    const block1 = new Block(service, INITIAL_BLOCK, {
-        x: 100,
-        y: 100,
-    })
-    const block2 = new Block(service, INITIAL_BLOCK, {
-        x: 300,
-        y: 100,
-    })
-    const block3 = new Block(service, INITIAL_BLOCK, {
-        x: 500,
-        y: 100,
-    })
-    const block4 = new Block(service, INITIAL_BLOCK, {
-        x: 700,
-        y: 100,
-    })
-
-    return [block1, block2, block3, block4]
 }
 
 main()
