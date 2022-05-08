@@ -1,24 +1,23 @@
 import {BarMovingInterface} from "../component/service/barMoving";
 import {Bar} from "../component/bar";
 import {onMouseMoveEvent} from "../component/service/barControllerPositionNotifier";
+import {INITIAL_APP} from "./parameter/app";
+import {CANVAS_PADDING, WALL_THICKNESS} from "../component/stage/simpleStage/simpleStage";
 
 export class BarMoving implements BarMovingInterface{
     move(component: Bar, mouseMoving: onMouseMoveEvent): void {
         if (!component.instance) return
 
         const barHalfWidth = component.instance.width / 2
+        const leftmostCoordinatesInStage = CANVAS_PADDING.X + WALL_THICKNESS
+        const rightmostCoordinatesInStage = INITIAL_APP.canvasWidth - CANVAS_PADDING.X - WALL_THICKNESS
 
-        // FIXME: 本来はステージの数字を見たほうがいいけど一旦ハードコーディングした
-        const padding = 25;
-        const wallWidth = 10;
-        const frameSize = 1000;
-
-        if (mouseMoving.clientX < barHalfWidth + padding + wallWidth){
+        if (mouseMoving.clientX < barHalfWidth + leftmostCoordinatesInStage){
             // |___           |
             component.instance.x = 25 + 10
-        } else if (mouseMoving.clientX > frameSize - padding - wallWidth - barHalfWidth) {
+        } else if (mouseMoving.clientX >  rightmostCoordinatesInStage - barHalfWidth) {
             // |           ___|
-            component.instance.x = frameSize - padding - wallWidth - component.instance.width
+            component.instance.x = rightmostCoordinatesInStage - component.instance.width
         } else {
             // |   ___        |
             component.instance.x = mouseMoving.clientX - barHalfWidth
