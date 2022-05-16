@@ -9,9 +9,9 @@ import {Service} from "./component/service/service";
 import {Reflection} from "./service/reflection";
 import {Moving} from "./service/moving";
 import {INITIAL_APP} from "./service/parameter/app";
-import {BarControllerPositionNotifier} from "./service/barControllerPositionNotifier";
 import {BarMoving} from "./service/barMoving";
 import {BlockSpawn} from "./service/blockSpawn";
+import {Input} from "./service/input";
 
 function main() {
     if (import.meta.env.DEV) {
@@ -58,8 +58,8 @@ function main() {
         componentManager: componentManager
     })
 
-    new BarControllerPositionNotifier({
-        componentManager, stage: pixiApp.stage
+    new Input({
+        componentManager: componentManager, stage: pixiApp.stage
     })
 }
 

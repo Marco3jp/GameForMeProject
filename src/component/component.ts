@@ -24,5 +24,7 @@ export interface Component {
 
     onCollision?: (collisionTarget: Component) => void
 
-    onChangeControllerPosition?: (controllerPosition: onMouseMoveEvent) => void
+    onMouseMove?: (event: onMouseMoveEvent) => void
+
+    onKeydown?: (event: KeyboardEvent) => void
 }

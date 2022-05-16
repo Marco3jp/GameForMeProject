@@ -41,7 +41,7 @@ export class Bar implements Component{
 
     onCollision(_: Component): void {}
 
-    onChangeControllerPosition(event: onMouseMoveEvent) {
+    onMouseMove(event: onMouseMoveEvent) {
         this.service.barMoving.move(this, event)
     }
 }
