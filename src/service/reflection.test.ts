@@ -1,5 +1,6 @@
 import "jest"
-import {Reflection, reflectionInput} from "./reflection";
+import {reflectionInput} from "../component/service/reflection";
+import {Reflection} from "./reflection";
 
 type testCase = {
     name: string
