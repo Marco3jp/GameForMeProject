@@ -12,6 +12,7 @@ import {INITIAL_APP} from "./service/parameter/app";
 import {BarMoving} from "./service/barMoving";
 import {BlockSpawn} from "./service/blockSpawn";
 import {Input} from "./service/input";
+import {Nudging} from "./service/nudging";
 
 function main() {
     if (import.meta.env.DEV) {
@@ -36,6 +37,7 @@ function main() {
         reflection: new Reflection(),
         moving: new Moving(),
         barMoving: new BarMoving(),
+        nudging: new Nudging(),
         componentManager
     }
 
