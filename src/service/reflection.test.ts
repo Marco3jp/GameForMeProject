@@ -14,7 +14,6 @@ type testCase = {
     }
 }
 
-
 const testCases: testCase[] = [
     {
         name: "reflective : wall = 45 : 0",
@@ -275,9 +274,11 @@ const testCases: testCase[] = [
 
 // TODO: 特にエラーをスローするケースが用意できてないわね〜〜〜って感じ
 // 壁とオブジェクトが同じ角度のケース必要？
+const reflection = new Reflection()
+
 testCases.forEach(testCase => {
     test(testCase.name, () => {
-        const result = Reflection.calculateWithLine(testCase.in.reflection, testCase.in.wall)
+        const result = reflection.calculateWithLine(testCase.in.reflection, testCase.in.wall)
         expect(result).toBe(testCase.expected.angle);
     })
 })
