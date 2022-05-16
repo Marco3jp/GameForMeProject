@@ -3,7 +3,7 @@ import {Graphics} from "pixi.js";
 import {initial_bar, INITIAL_BAR} from "../service/parameter/bar";
 import {Component, ComponentName} from "./component";
 import {Service} from "./service/service";
-import {onMouseMoveEvent} from "./service/barControllerPositionNotifier";
+import {onMouseMoveEvent} from "./service/input";
 
 export const BarComponentName: ComponentName = "Bar"
 

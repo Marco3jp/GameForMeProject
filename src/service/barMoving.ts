@@ -1,6 +1,6 @@
 import {BarMovingInterface} from "../component/service/barMoving";
 import {Bar} from "../component/bar";
-import {onMouseMoveEvent} from "../component/service/barControllerPositionNotifier";
+import {onMouseMoveEvent} from "../component/service/input";
 import {INITIAL_APP} from "./parameter/app";
 import {CANVAS_PADDING, WALL_THICKNESS} from "../component/stage/simpleStage/simpleStage";
 

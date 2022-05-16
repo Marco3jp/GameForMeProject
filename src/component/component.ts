@@ -1,5 +1,5 @@
 import {DisplayObject} from "pixi.js";
-import {onMouseMoveEvent} from "./service/barControllerPositionNotifier";
+import {onMouseMoveEvent} from "./service/input";
 
 export type ComponentName = string
 

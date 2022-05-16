@@ -1,5 +1,5 @@
 import {Bar} from "../bar";
-import {onMouseMoveEvent} from "./barControllerPositionNotifier";
+import {onMouseMoveEvent} from "./input";
 
 export interface BarMovingInterface {
     move(component: Bar, mouseMoving: onMouseMoveEvent): void
