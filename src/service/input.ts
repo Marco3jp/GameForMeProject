@@ -19,14 +19,11 @@ export class Input {
 
         input.stage.on("mousemove", (e) => this.onMouseMove(e))
         window.document.addEventListener("keydown", (e) => this.onKeydown(e))
-
     }
 
     // ドキュメントに書かれている mousemove の返す値と型が違うものの、実際 InteractionEvent が返ってくるのでそういうことにする
     // https://pixijs.download/release/docs/PIXI.Container.html#mousemove
     onMouseMove(event: InteractionEvent) {
-        console.log(this.componentManager)
-
         const targetComponents = this.componentManager.list.filter(component => component.onMouseMove)
         targetComponents.forEach(component => {
             if (component.onMouseMove) {
