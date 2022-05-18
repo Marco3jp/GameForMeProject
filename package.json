@@ -5,11 +5,13 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "gh-pages:build": "DEPLOY_ENV=GH_PAGES npm run build"
   },
   "devDependencies": {
     "@types/jest": "27.4.1",
     "@types/offscreencanvas": "2019.6.4",
+    "@types/ws": "^8.5.3",
     "babel-core": "6.26.3",
     "babel-jest": "27.5.1",
     "jest": "27.5.1",
