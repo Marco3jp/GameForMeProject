@@ -4,6 +4,7 @@ import {initial_ball, INITIAL_BALL} from "../service/parameter/ball";
 import {Component, ComponentName} from "./component";
 import {Service} from "./service/service";
 import {NudgeDirection} from "./service/nudging";
+import {BarComponentName} from "./bar";
 
 export const BallComponentName: ComponentName = "Ball"
 
@@ -14,6 +15,10 @@ export const NudgeKeyBind = {
     NUDGE_RIGHT_SIDE: "KeyD"
 }
 
+export const RallyKeyBind = {
+    RALLY: "Space"
+}
+
 export class Ball implements Component {
     instance: Graphics
 
@@ -22,6 +27,8 @@ export class Ball implements Component {
     componentName: ComponentName;
 
     speed: number
+    accelerationStep: number
+    accelerationLimit: number
 
     service: Service
 
@@ -41,12 +48,14 @@ export class Ball implements Component {
         this.componentName = BallComponentName
 
         this.speed = initial.SPEED
+        this.accelerationStep = initial.ACCELERATION_STEP
+        this.accelerationLimit = initial.ACCELERATION_LIMIT
 
         this.isBlockBreaker = true
 
         this.directionOfMovement = initial.DIRECTION_OF_MOVEMENT
 
-        PIXI.Ticker.shared.add(()=> {
+        PIXI.Ticker.shared.add(() => {
             this.service.moving.move(this)
         })
     }
@@ -63,26 +72,29 @@ export class Ball implements Component {
     }
 
     onKeydown(event: KeyboardEvent) {
-        let direction;
-
-        if (event.code === NudgeKeyBind.NUDGE_LEFT_SIDE) {
-            direction = NudgeDirection.LEFT
-        }else if (event.code === NudgeKeyBind.NUDGE_RIGHT_SIDE) {
-            direction = NudgeDirection.RIGHT
-        } else {
-            return
+        switch (event.code) {
+            case NudgeKeyBind.NUDGE_LEFT_SIDE:
+                this.handleNudge(NudgeDirection.LEFT)
+                return;
+            case NudgeKeyBind.NUDGE_RIGHT_SIDE:
+                this.handleNudge(NudgeDirection.RIGHT)
+                return;
+            case RallyKeyBind.RALLY:
+                this.handleRally()
+                return;
         }
-
-        this.handleNudge(direction)
     }
 
     handleNudge(nudgeDirection: NudgeDirection) {
         try {
             this.directionOfMovement = this.service.nudging.calculateNudging(
                 this.directionOfMovement, nudgeDirection)
-        }catch (e) {
+        } catch (e) {
             // TODO: 最悪なのでどうにかしよう
             this.directionOfMovement = 270
         }
+    }
+
+    handleRally() {
     }
 }
