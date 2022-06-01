@@ -3,7 +3,7 @@ import {Ball} from "./component/ball";
 import {Bar} from "./component/bar";
 import {ComponentManager} from "./service/componentManager";
 import {CollisionChecker} from "./service/collisionChecker";
-import {GameGuardian} from "./service/GameGuardian";
+import {GameGuardian} from "./service/gameGuardian";
 import {SimpleStage} from "./component/stage/simpleStage/simpleStage";
 import {Service} from "./component/service/service";
 import {Reflection} from "./service/reflection";
