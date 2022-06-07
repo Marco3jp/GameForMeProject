@@ -96,5 +96,8 @@ export class Ball implements Component {
     }
 
     handleRally() {
+        const bar = this.service.componentManager.list.find((component) => component.componentName === BarComponentName)
+        if (!bar) return
+        this.service.rally.tryRally(this, bar)
     }
 }
