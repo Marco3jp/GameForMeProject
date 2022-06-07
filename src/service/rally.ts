@@ -5,6 +5,7 @@ import {Component} from "../component/component";
 import {Rectangle} from "@pixi/math";
 import {INITIAL_RALLY} from "./parameter/rally";
 import {DisplayObject} from "pixi.js";
+import {GameGuardian} from "./gameGuardian";
 
 const RACKETTABLE_OBJECTS = [
     BarComponentName
@@ -28,9 +29,16 @@ export class Rally implements RallyInterface {
     tryRally(ball: Ball, rackettableObject: Component): void {
         if (!RACKETTABLE_OBJECTS.includes(rackettableObject.componentName)) return;
 
-        if (this.judgeRally(ball, rackettableObject) !== EXIST_IN_RANGE.NOT_EXIST) {
+        const rallyResult = this.judgeRally(ball, rackettableObject)
+
+        if (rallyResult !== EXIST_IN_RANGE.NOT_EXIST) {
             this.accelerateBall(ball)
         }
+
+        GameGuardian.log({
+            ballSpeed: ball.speed,
+            rallyResult: rallyResult
+        }, 'rally')
     }
 
     // TODO: これここにあるの微妙に迷っているので良いか考え直したい
@@ -56,19 +64,21 @@ export class Rally implements RallyInterface {
         return this.judgeExistInRange(range)
     }
 
-    getDirectionOfRackettableObject(rackettableDisplayObject: DisplayObject): RACKETTABLE_OBJECT_DIRECTION {
-        switch (rackettableDisplayObject.angle) {
+    // TODO: バーの場合、0側を向いて width > height な値で実装されていたので多分これは正しいんだけど、なんとも釈然としていないので整理したい気持ちがある
+    getDirectionOfRackettableObject(rackettableObject: Component): RACKETTABLE_OBJECT_DIRECTION {
+        console.log(rackettableObject.directionOfMovement)
+        switch (rackettableObject.directionOfMovement) {
             case 0:
-                return RACKETTABLE_OBJECT_DIRECTION.RIGHT
-            case 90:
-                return RACKETTABLE_OBJECT_DIRECTION.BOTTOM
-            case 180:
-                return RACKETTABLE_OBJECT_DIRECTION.LEFT
-            case 270:
                 return RACKETTABLE_OBJECT_DIRECTION.TOP
+            case 90:
+                return RACKETTABLE_OBJECT_DIRECTION.RIGHT
+            case 180:
+                return RACKETTABLE_OBJECT_DIRECTION.BOTTOM
+            case 270:
+                return RACKETTABLE_OBJECT_DIRECTION.LEFT
             default:
                 // FIXME: 微妙
-                return RACKETTABLE_OBJECT_DIRECTION.RIGHT
+                return RACKETTABLE_OBJECT_DIRECTION.TOP
         }
     }
 
@@ -92,6 +102,7 @@ export class Rally implements RallyInterface {
         range: number
     ): EXIST_IN_RANGE {
         const absoluteRange = Math.abs(range)
+        GameGuardian.log(absoluteRange, 'range')
 
         if (absoluteRange <= INITIAL_RALLY.CLOSE_RANGE) {
             return EXIST_IN_RANGE.CLOSE_RANGE
