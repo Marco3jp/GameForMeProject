@@ -6,3 +6,6 @@
     - 特に複数形にするメリットがなさそうなので
   - 変数名は配列で複数形にする
     - 回すときに単数形に直せばOKなので楽
+- 型チェック忘れないでね
+  - `git config core.hooksPath .githooks`
+  - `chmod a+x .githooks/pre-push`
