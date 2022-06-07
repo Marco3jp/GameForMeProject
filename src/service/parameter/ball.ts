@@ -5,7 +5,9 @@ export const INITIAL_BALL: initial_ball = {
     COLOR: 0xffffff,
     SPEED: 8,
     ANGLE: 0,
-    DIRECTION_OF_MOVEMENT: 40
+    DIRECTION_OF_MOVEMENT: 40,
+    ACCELERATION_STEP: 0.25,
+    ACCELERATION_LIMIT: 16
 }
 
 export type initial_ball = {
@@ -15,5 +17,7 @@ export type initial_ball = {
     COLOR: number,
     SPEED: number,
     ANGLE: number,
-    DIRECTION_OF_MOVEMENT: number
+    DIRECTION_OF_MOVEMENT: number,
+    ACCELERATION_STEP: number,
+    ACCELERATION_LIMIT: number
 }
