@@ -4,7 +4,6 @@ import {Ball} from "../component/ball";
 import {Component} from "../component/component";
 import {Rectangle} from "@pixi/math";
 import {INITIAL_RALLY} from "./parameter/rally";
-import {DisplayObject} from "pixi.js";
 import {GameGuardian} from "./gameGuardian";
 
 const RACKETTABLE_OBJECTS = [
@@ -57,7 +56,7 @@ export class Rally implements RallyInterface {
 
         // TODO: 0, 90, 180, 270を向いているものに対して、その向きのすべてを判定とする実装にしている
         //  後者はゲーム性として考えられる範囲だけど、前者は単に手抜きなので対応したい
-        const direction = this.getDirectionOfRackettableObject(rackettableObject.instance)
+        const direction = this.getDirectionOfRackettableObject(rackettableObject)
         const ballBounds = ball.instance.getBounds()
         const rackettableObjectBounds = rackettableObject.instance.getBounds()
         const range = this.getRangeFromBallToRackettableObject(ballBounds, rackettableObjectBounds, direction)
