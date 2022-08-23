@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js';
 import {Graphics} from "pixi.js";
-import {Component, ComponentName} from "../../component";
+import {Component, ComponentName, InstanceName} from "../../component";
 import {initial_simple_wall} from "../../../service/parameter/simpleWall";
 
 // なんかこれ別名というか、汎用名と固有名がほしい気がする
@@ -11,6 +11,7 @@ export class SimpleWall implements Component{
     instance: Graphics
 
     componentName: ComponentName
+    instanceName: InstanceName
 
     isBlockBreaker: boolean
 
@@ -18,7 +19,7 @@ export class SimpleWall implements Component{
 
     directionOfMovement: number;
 
-    constructor(initial: initial_simple_wall) {
+    constructor(initial: initial_simple_wall, name: InstanceName) {
         this.instance = new PIXI.Graphics()
         this.instance.beginFill(initial.COLOR)
         this.instance.drawRect(0, 0, initial.WIDTH, initial.HEIGHT)
@@ -27,6 +28,7 @@ export class SimpleWall implements Component{
         this.instance.angle = initial.ANGLE
 
         this.componentName = SimpleWallComponentName
+        this.instanceName = name
 
         this.isBlockBreaker = false
 

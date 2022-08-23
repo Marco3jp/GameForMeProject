@@ -18,6 +18,10 @@ export const STAGE_SIZE = {
     Y: INITIAL_APP.canvasHeight - CANVAS_PADDING.Y * 2,
 }
 
+export const TOP_WALL_INSTANCE_NAME = "topWall"
+export const RIGHT_WALL_INSTANCE_NAME = "rightWall"
+export const BOTTOM_WALL_INSTANCE_NAME = "bottomWall"
+export const LEFT_WALL_INSTANCE_NAME = "leftWall"
 
 export class SimpleStage {
     components: Component[]
@@ -33,7 +37,7 @@ export class SimpleStage {
             X: CANVAS_PADDING.X,
             Y: CANVAS_PADDING.Y,
             DIRECTION_OF_MOVEMENT: 0
-        })
+        }, TOP_WALL_INSTANCE_NAME)
         const wall2 = new SimpleWall({
             ...INITIAL_SIMPLE_WALL,
             COLOR: 0x2196F3,
@@ -43,7 +47,7 @@ export class SimpleStage {
             X: INITIAL_APP.canvasWidth - CANVAS_PADDING.X,
             Y: CANVAS_PADDING.Y,
             DIRECTION_OF_MOVEMENT: 0
-        })
+        }, RIGHT_WALL_INSTANCE_NAME)
         const wall3 = new SimpleWall({
             ...INITIAL_SIMPLE_WALL,
             COLOR: 0x4CAF50,
@@ -53,7 +57,7 @@ export class SimpleStage {
             X: INITIAL_APP.canvasWidth - CANVAS_PADDING.X,
             Y: INITIAL_APP.canvasHeight - CANVAS_PADDING.Y,
             DIRECTION_OF_MOVEMENT: 0
-        })
+        }, BOTTOM_WALL_INSTANCE_NAME)
         const wall4 = new SimpleWall({
             ...INITIAL_SIMPLE_WALL,
             COLOR: 0xFFEB3B,
@@ -63,7 +67,7 @@ export class SimpleStage {
             X: CANVAS_PADDING.X,
             Y: INITIAL_APP.canvasHeight - CANVAS_PADDING.Y,
             DIRECTION_OF_MOVEMENT: 0
-        })
+        }, LEFT_WALL_INSTANCE_NAME)
 
         this.components = [wall1, wall2, wall3, wall4]
     }

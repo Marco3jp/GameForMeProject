@@ -2,10 +2,14 @@ import {DisplayObject} from "pixi.js";
 import {onMouseMoveEvent} from "./service/input";
 
 export type ComponentName = string
+export type InstanceName = string
 
 export interface Component {
     componentName: ComponentName
+    instanceName?: InstanceName
 
+    // TODO: 上の instanceName はコンポーネントを実体化した一つ一つに対してつけるもの
+    //   以下の instance はコンポーネントが保持するDisplayObjectのことで、こちらの名前が適切ではないので
     instance: DisplayObject | null
 
     // TODO: 属性としてまとめたほうがよくなったらまとめたほうがいいかも（それはそうでは……？）
