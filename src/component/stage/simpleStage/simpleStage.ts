@@ -7,10 +7,10 @@ import {Component} from "../../component";
 import {INITIAL_APP} from "../../../service/parameter/app";
 
 export const CANVAS_PADDING = {
-    X: 25,
-    Y: 25
+    X: 0,
+    Y: 0
 };
-export const WALL_THICKNESS = 10;
+export const WALL_THICKNESS = 50;
 
 // TODO: これ壁の厚さを含めたサイズなので明示したほうが良さそう
 export const STAGE_SIZE = {
