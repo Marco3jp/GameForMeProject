@@ -5,6 +5,8 @@ import {Component, ComponentName} from "./component";
 import {Service} from "./service/service";
 import {NudgeDirection} from "./service/nudging";
 import {BarComponentName} from "./bar";
+import {SimpleWallComponentName} from "./stage/simpleStage/simpleWall";
+import {BOTTOM_WALL_INSTANCE_NAME} from "./stage/simpleStage/simpleStage";
 
 export const BallComponentName: ComponentName = "Ball"
 
@@ -29,6 +31,8 @@ export class Ball implements Component {
     speed: number
     accelerationStep: number
     accelerationLimit: number
+    decelerationStep: number
+    decelerationLimit: number
 
     service: Service
 
@@ -50,6 +54,8 @@ export class Ball implements Component {
         this.speed = initial.SPEED
         this.accelerationStep = initial.ACCELERATION_STEP
         this.accelerationLimit = initial.ACCELERATION_LIMIT
+        this.decelerationStep = initial.DECELERATION_STEP
+        this.decelerationLimit = initial.DECELERATION_LIMIT
 
         this.isBlockBreaker = true
 
@@ -69,6 +75,15 @@ export class Ball implements Component {
                 angle: collisionTarget.instance.angle
             }
         )
+
+        if (collisionTarget?.instanceName === BOTTOM_WALL_INSTANCE_NAME) {
+            const tmpSpeed = this.speed - this.decelerationStep;
+            if (tmpSpeed < this.decelerationLimit) {
+                this.speed = this.decelerationLimit
+                return
+            }
+            this.speed = tmpSpeed
+        }
     }
 
     onKeydown(event: KeyboardEvent) {
