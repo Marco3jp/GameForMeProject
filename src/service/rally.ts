@@ -43,7 +43,7 @@ export class Rally implements RallyInterface {
     // TODO: これここにあるの微妙に迷っているので良いか考え直したい
     accelerateBall(ball: Ball) {
         const tmpSpeed = ball.speed + ball.accelerationStep;
-        if (tmpSpeed >= ball.accelerationLimit) return
+        if (tmpSpeed > ball.accelerationLimit) return
         ball.speed = tmpSpeed
     }
 
