@@ -5,7 +5,6 @@ import {Component, ComponentName} from "./component";
 import {Service} from "./service/service";
 import {NudgeDirection} from "./service/nudging";
 import {BarComponentName} from "./bar";
-import {SimpleWallComponentName} from "./stage/simpleStage/simpleWall";
 import {BOTTOM_WALL_INSTANCE_NAME} from "./stage/simpleStage/simpleStage";
 
 export const BallComponentName: ComponentName = "Ball"
