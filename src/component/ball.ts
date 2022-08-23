@@ -86,6 +86,9 @@ export class Ball implements Component {
         }
     }
 
+    // TODO: 多分これNudgeサービスが受け取ってボールとラケットを探すほうが良い気がしてきた
+    //   別にボールにとってはナッジされるかどうかってあんまり関係がない
+    //   というかもしやイベントリスナーを自前で作ったほうが良いかも
     onKeydown(event: KeyboardEvent) {
         switch (event.code) {
             case NudgeKeyBind.NUDGE_LEFT_SIDE:
