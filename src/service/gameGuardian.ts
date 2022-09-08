@@ -1,4 +1,5 @@
 import * as PIXI from "pixi.js";
+import {numberPadding} from "../lib/utils";
 
 // 試合を見守るサービス
 // GameMasterと似ているがこちらのサービスはゲームの中身には干渉せず、一時停止とか再開を担う
@@ -20,13 +21,20 @@ export class GameGuardian {
         if (!loggerElm) return
 
         const newElm = document.createElement("pre")
-        if (typeof data === "string") {
-            newElm.textContent = data
-        } if (typeof data === "number"){
-            newElm.textContent = data.toString()
-        }else {
-            newElm.textContent = JSON.stringify(data)
+        if (key) {
+            newElm.textContent += `${key}: `
         }
+
+        if (typeof data === "string") {
+            newElm.textContent += data
+        } if (typeof data === "number"){
+            newElm.textContent += data.toString()
+        }else {
+            newElm.textContent += JSON.stringify(data)
+        }
+
+        const date = new Date()
+        newElm.textContent += ` [${numberPadding(date.getHours())}-${numberPadding(date.getMinutes())}-${numberPadding(date.getSeconds())}.${numberPadding(date.getMilliseconds())}]`
 
         if (key) {
             newElm.classList.add(key)
