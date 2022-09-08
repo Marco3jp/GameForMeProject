@@ -6,6 +6,7 @@ import {Service} from "./service/service";
 import {NudgeDirection} from "./service/nudging";
 import {BarComponentName} from "./bar";
 import {BOTTOM_WALL_INSTANCE_NAME} from "./stage/simpleStage/simpleStage";
+import {GameGuardian} from "../service/gameGuardian";
 
 export const BallComponentName: ComponentName = "Ball"
 
@@ -62,6 +63,7 @@ export class Ball implements Component {
 
         PIXI.Ticker.shared.add(() => {
             this.service.moving.move(this)
+            GameGuardian.log({x: this.instance.x.toFixed(3), y: this.instance.y.toFixed(3), directionOfMovement: this.directionOfMovement}, 'Ball_Stats')
         })
     }
 

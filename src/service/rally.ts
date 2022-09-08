@@ -68,7 +68,6 @@ export class Rally implements RallyInterface {
 
     // TODO: バーの場合、0側を向いて width > height な値で実装されていたので多分これは正しいんだけど、なんとも釈然としていないので整理したい気持ちがある
     getDirectionOfRackettableObject(rackettableObject: Component): RACKETTABLE_OBJECT_DIRECTION {
-        console.log(rackettableObject.directionOfMovement)
         switch (rackettableObject.directionOfMovement) {
             case 0:
                 return RACKETTABLE_OBJECT_DIRECTION.TOP
