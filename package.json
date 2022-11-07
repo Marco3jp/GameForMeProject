@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@types/jest": "27.4.1",
+    "@types/matter-js": "0.18.2",
     "@types/offscreencanvas": "2019.6.4",
     "@types/ws": "^8.5.3",
     "babel-core": "6.26.3",
@@ -22,6 +23,7 @@
     "vue-tsc": "0.37.2"
   },
   "dependencies": {
-    "pixi.js": "6.3.0"
+    "pixi.js": "6.3.0",
+    "matter-js": "0.18.0"
   }
 }
