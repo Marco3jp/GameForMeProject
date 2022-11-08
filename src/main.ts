@@ -14,15 +14,16 @@ import {BlockSpawn} from "./service/blockSpawn";
 import {Input} from "./service/input";
 import {Nudging} from "./service/nudging";
 import {Rally} from "./service/rally";
+import {Composite, Engine, Mouse, MouseConstraint, Render, Runner, World} from "matter-js";
 
-function main() {
+export function main(): MatterComponents | null {
     if (import.meta.env.DEV) {
         // @ts-ignore
         window.__PIXI_INSPECTOR_GLOBAL_HOOK__ && window.__PIXI_INSPECTOR_GLOBAL_HOOK__.register({PIXI: PIXI});
     }
 
     const root = document.querySelector('#app')
-    if (!root) return
+    if (!root) return null;
 
     const pixiApp = new PIXI.Application({
         width: INITIAL_APP.canvasWidth,
@@ -30,8 +31,14 @@ function main() {
     })
     root.appendChild(pixiApp.view)
 
+    const matterComponents = initMatter()
+    if (!matterComponents) return null;
+
+    const {engine, render, world} = matterComponents
+
     const componentManager = new ComponentManager({
-        stage: pixiApp.stage
+        stage: pixiApp.stage,
+        matterStage: world
     })
 
     const service: Service = {
@@ -65,6 +72,29 @@ function main() {
     new Input({
         componentManager: componentManager, stage: pixiApp.stage
     })
+
+    const mouse = Mouse.create(render.canvas)
+    const mouseConstraint = MouseConstraint.create(engine, {
+        mouse: mouse,
+        constraint: {
+            stiffness: 0.2,
+            render: {
+                visible: false
+            }
+        }
+    });
+
+    Composite.add(world, mouseConstraint);
+
+    render.mouse = mouse;
+
+    Render.lookAt(render, {
+        min: { x: 0, y: 0 },
+        max: { x: INITIAL_APP.canvasWidth, y: INITIAL_APP.canvasHeight }
+    });
+
+    // return for testing page
+    return matterComponents
 }
 
 function initGameGuardian() {
@@ -78,6 +108,49 @@ function initGameGuardian() {
     if (resumeButton) {
         resumeButton.addEventListener("click", GameGuardian.resume)
     }
+}
+
+type MatterComponents = {
+    engine: Engine,
+    runner: Runner,
+    render: Render,
+    world: World,
+    canvas: HTMLCanvasElement,
+    stop: () => void
+}
+
+function initMatter(): MatterComponents | null {
+    const matterRoot = document.querySelector<HTMLDivElement>("#matter_app")
+    if (!matterRoot) {
+        return null
+    }
+
+    const engine = Engine.create()
+    const world = engine.world
+    const render = Render.create({
+        element: matterRoot,
+        engine: engine,
+        options: {
+            width: INITIAL_APP.canvasWidth,
+            height: INITIAL_APP.canvasHeight
+        }
+    })
+
+    Render.run(render);
+    const runner = Runner.create()
+    Runner.run(runner, engine)
+
+    return {
+        engine: engine,
+        runner: runner,
+        render: render,
+        world: world,
+        canvas: render.canvas,
+        stop: function() {
+            Render.stop(render);
+            Runner.stop(runner);
+        }
+    };
 }
 
 main()

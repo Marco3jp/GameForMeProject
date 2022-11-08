@@ -3,12 +3,16 @@ import {Graphics} from "pixi.js";
 import {Service} from "./service/service";
 import * as PIXI from "pixi.js";
 import {initial_block, INITIAL_BLOCK} from "../service/parameter/block";
+import {Bodies, Body} from "matter-js";
+import {calculateDegreesToRadians} from "../lib/formula";
 
 export const BlockComponentName = "Block"
 
 export class Block implements Component {
     componentName: ComponentName
     instance: Graphics
+    matterInstance: Body
+
     isBlockBreaker: boolean
     service: Service
     directionOfMovement: number
@@ -21,9 +25,11 @@ export class Block implements Component {
         this.instance.beginFill(initial.COLOR)
         this.instance.drawRect(0, 0, initial.WIDTH, initial.HEIGHT)
         this.instance.endFill()
-
         this.instance.setTransform(location.x, location.y)
         this.instance.angle = initial.ANGLE
+
+        this.matterInstance = Bodies.rectangle(location.x + initial.WIDTH / 2, location.y, initial.WIDTH, initial.HEIGHT)
+        Body.setAngle(this.matterInstance, calculateDegreesToRadians(initial.ANGLE))
 
         this.componentName = BlockComponentName
 

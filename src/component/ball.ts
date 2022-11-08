@@ -7,6 +7,8 @@ import {NudgeDirection} from "./service/nudging";
 import {BarComponentName} from "./bar";
 import {BOTTOM_WALL_INSTANCE_NAME} from "./stage/simpleStage/simpleStage";
 import {GameGuardian} from "../service/gameGuardian";
+import {Bodies, Body} from "matter-js";
+import {calculateDegreesToRadians} from "../lib/formula";
 
 export const BallComponentName: ComponentName = "Ball"
 
@@ -23,6 +25,7 @@ export const RallyKeyBind = {
 
 export class Ball implements Component {
     instance: Graphics
+    matterInstance: Body
 
     isBlockBreaker: boolean
 
@@ -48,6 +51,11 @@ export class Ball implements Component {
         this.instance.endFill()
         this.instance.setTransform(initial.X, initial.Y)
         this.instance.angle = initial.ANGLE
+
+        this.matterInstance = Bodies.circle(0, 0, initial.RADIUS)
+        Body.setAngle(this.matterInstance, calculateDegreesToRadians(initial.ANGLE))
+        // なんかこれ叩くメソッド違いそう
+        // Body.setAngularVelocity(this.matterInstance, calculateDegreesToRadians(initial.DIRECTION_OF_MOVEMENT))
 
         this.componentName = BallComponentName
 

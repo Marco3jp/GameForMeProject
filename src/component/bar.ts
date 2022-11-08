@@ -4,11 +4,14 @@ import {initial_bar, INITIAL_BAR} from "../service/parameter/bar";
 import {Component, ComponentName} from "./component";
 import {Service} from "./service/service";
 import {onMouseMoveEvent} from "./service/input";
+import {Bodies, Body} from "matter-js";
+import {calculateDegreesToRadians} from "../lib/formula";
 
 export const BarComponentName: ComponentName = "Bar"
 
 export class Bar implements Component{
     instance: Graphics
+    matterInstance: Body
 
     componentName: ComponentName
 
@@ -29,6 +32,9 @@ export class Bar implements Component{
         this.instance.endFill()
         this.instance.setTransform(initial.X, initial.Y)
         this.instance.angle = initial.ANGLE
+
+        this.matterInstance = Bodies.rectangle(initial.X + initial.WIDTH / 2, initial.Y, initial.WIDTH, initial.HEIGHT)
+        Body.setAngle(this.matterInstance, calculateDegreesToRadians(initial.ANGLE))
 
         this.componentName = BarComponentName
 

@@ -34,8 +34,8 @@ export class SimpleStage {
             ANGLE: 0,
             HEIGHT: WALL_THICKNESS,
             WIDTH: STAGE_SIZE.X,
-            X: CANVAS_PADDING.X,
-            Y: CANVAS_PADDING.Y,
+            X: INITIAL_APP.canvasWidth / 2,
+            Y: WALL_THICKNESS / 2,
             DIRECTION_OF_MOVEMENT: 0
         }, TOP_WALL_INSTANCE_NAME)
         const wall2 = new SimpleWall({
@@ -44,8 +44,8 @@ export class SimpleStage {
             ANGLE: 90,
             HEIGHT: WALL_THICKNESS,
             WIDTH: STAGE_SIZE.Y,
-            X: INITIAL_APP.canvasWidth - CANVAS_PADDING.X,
-            Y: CANVAS_PADDING.Y,
+            X: INITIAL_APP.canvasWidth - (WALL_THICKNESS / 2),
+            Y: INITIAL_APP.canvasHeight / 2,
             DIRECTION_OF_MOVEMENT: 0
         }, RIGHT_WALL_INSTANCE_NAME)
         const wall3 = new SimpleWall({
@@ -54,8 +54,8 @@ export class SimpleStage {
             ANGLE: 180,
             HEIGHT: WALL_THICKNESS,
             WIDTH: STAGE_SIZE.X,
-            X: INITIAL_APP.canvasWidth - CANVAS_PADDING.X,
-            Y: INITIAL_APP.canvasHeight - CANVAS_PADDING.Y,
+            X: INITIAL_APP.canvasWidth / 2,
+            Y: INITIAL_APP.canvasHeight - (WALL_THICKNESS / 2),
             DIRECTION_OF_MOVEMENT: 0
         }, BOTTOM_WALL_INSTANCE_NAME)
         const wall4 = new SimpleWall({
@@ -64,8 +64,8 @@ export class SimpleStage {
             ANGLE: 270,
             HEIGHT: WALL_THICKNESS,
             WIDTH: STAGE_SIZE.Y,
-            X: CANVAS_PADDING.X,
-            Y: INITIAL_APP.canvasHeight - CANVAS_PADDING.Y,
+            X: WALL_THICKNESS / 2,
+            Y: INITIAL_APP.canvasHeight / 2,
             DIRECTION_OF_MOVEMENT: 0
         }, LEFT_WALL_INSTANCE_NAME)
 
