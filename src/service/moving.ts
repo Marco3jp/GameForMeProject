@@ -1,13 +1,16 @@
 import {Component} from "../component/component";
 import {Movement, MovingInterface} from "../component/service/moving";
+import Matter from "matter-js";
 
 export class Moving implements MovingInterface {
     move(component: Component) {
-        if (!component.instance || !component.speed) return
+        if (!component.instance || !component.matterInstance || !component.speed) return
 
         const moving = this.calculateMovement(component)
         component.instance.x += moving.x
         component.instance.y += moving.y
+
+        Matter.Body.translate(component.matterInstance, Matter.Vector.create(moving.x, moving.y))
     }
 
     // TODO: この移動は慣性移動であって、すべての移動を司るわけではないので名前を直したほうがいいかも
