@@ -14,6 +14,7 @@ import {BlockSpawn} from "./service/blockSpawn";
 import {Input} from "./service/input";
 import {Nudging} from "./service/nudging";
 import {Rally} from "./service/rally";
+import {Event} from "./service/event";
 import {Composite, Engine, Mouse, MouseConstraint, Render, Runner, World} from "matter-js";
 
 export function main(): MatterComponents | null {
@@ -47,6 +48,7 @@ export function main(): MatterComponents | null {
         barMoving: new BarMoving(),
         nudging: new Nudging(),
         rally: new Rally(),
+        event: new Event({matterEngine: engine}),
         componentManager
     }
 

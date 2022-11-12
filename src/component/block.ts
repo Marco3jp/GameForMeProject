@@ -39,7 +39,7 @@ export class Block implements Component {
 
         this.directionOfMovement = initial.DIRECTION_OF_MOVEMENT
 
-        PIXI.Ticker.shared.add(()=> {
+        this.service.event.addMatterEventListener("beforeUpdate", ()=> {
             this.service.moving.move(this)
         })
     }

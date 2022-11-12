@@ -69,9 +69,10 @@ export class Ball implements Component {
 
         this.directionOfMovement = initial.DIRECTION_OF_MOVEMENT
 
-        PIXI.Ticker.shared.add(() => {
+        this.service.event.addMatterEventListener("beforeUpdate", ()=> {
             this.service.moving.move(this)
-            GameGuardian.log({x: this.instance.x.toFixed(3), y: this.instance.y.toFixed(3), directionOfMovement: this.directionOfMovement}, 'Ball_Stats')
+            GameGuardian.log({x: this.instance.x.toFixed(3), y: this.instance.y.toFixed(3), directionOfMovement: this.directionOfMovement}, 'Pixi_Ball_Stats')
+            GameGuardian.log({x: this.matterInstance.position.x.toFixed(3), y: this.matterInstance.position.y.toFixed(3), directionOfMovement: this.directionOfMovement}, 'Matter_Ball_Stats')
         })
     }
 
