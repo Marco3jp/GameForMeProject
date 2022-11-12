@@ -1,4 +1,5 @@
 import {main} from "./main";
+// @ts-ignore
 import MatterTools from "matter-tools"
 import  "matter-js";
 
