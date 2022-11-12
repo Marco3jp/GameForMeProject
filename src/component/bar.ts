@@ -33,7 +33,9 @@ export class Bar implements Component{
         this.instance.setTransform(initial.X, initial.Y)
         this.instance.angle = initial.ANGLE
 
-        this.matterInstance = Bodies.rectangle(initial.X + initial.WIDTH / 2, initial.Y, initial.WIDTH, initial.HEIGHT)
+        this.matterInstance = Bodies.rectangle(initial.X + initial.WIDTH / 2, initial.Y, initial.WIDTH, initial.HEIGHT, {
+            isStatic: true
+        })
         Body.setAngle(this.matterInstance, calculateDegreesToRadians(initial.ANGLE))
 
         this.componentName = BarComponentName
