@@ -126,6 +126,9 @@ function initMatter(): MatterComponents | null {
     }
 
     const engine = Engine.create()
+    // このゲームでは重力を必要としないので0とする
+    engine.gravity.y = 0
+
     const world = engine.world
     const render = Render.create({
         element: matterRoot,
