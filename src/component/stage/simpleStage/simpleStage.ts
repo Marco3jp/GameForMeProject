@@ -6,16 +6,12 @@ import {INITIAL_SIMPLE_WALL} from "../../../service/parameter/simpleWall";
 import {Component} from "../../component";
 import {INITIAL_APP} from "../../../service/parameter/app";
 
-export const CANVAS_PADDING = {
-    X: 0,
-    Y: 0
-};
 export const WALL_THICKNESS = 50;
 
 // TODO: これ壁の厚さを含めたサイズなので明示したほうが良さそう
 export const STAGE_SIZE = {
-    X: INITIAL_APP.canvasWidth - CANVAS_PADDING.X * 2,
-    Y: INITIAL_APP.canvasHeight - CANVAS_PADDING.Y * 2,
+    X: INITIAL_APP.canvasWidth,
+    Y: INITIAL_APP.canvasHeight
 }
 
 export const TOP_WALL_INSTANCE_NAME = "topWall"
