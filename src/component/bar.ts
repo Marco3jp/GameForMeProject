@@ -52,4 +52,10 @@ export class Bar implements Component{
     onMouseMove(event: onMouseMoveEvent) {
         this.service.barMoving.move(this, event)
     }
+
+    public getWidth(): number {
+        const matterBounds = this.matterInstance.bounds
+        return matterBounds.max.x - matterBounds.min.x
+
+    }
 }
