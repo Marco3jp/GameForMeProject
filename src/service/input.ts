@@ -1,10 +1,8 @@
 import {ComponentManagerInterface} from "../component/service/componentManager";
-import {Container} from "@pixi/display";
-import {InteractionEvent} from "@pixi/interaction";
 
 type InputServiceInput = {
     componentManager: ComponentManagerInterface
-    stage: Container
+    canvas: HTMLCanvasElement
 }
 
 /**
@@ -15,20 +13,17 @@ export class Input {
 
     constructor(input: InputServiceInput) {
         this.componentManager = input.componentManager
-        input.stage.interactive = true
 
-        input.stage.on("mousemove", (e) => this.onMouseMove(e))
+        input.canvas.addEventListener("mousemove", (e) => this.onMouseMove(e) )
         window.document.addEventListener("keydown", (e) => this.onKeydown(e))
     }
 
-    // ドキュメントに書かれている mousemove の返す値と型が違うものの、実際 InteractionEvent が返ってくるのでそういうことにする
-    // https://pixijs.download/release/docs/PIXI.Container.html#mousemove
-    onMouseMove(event: InteractionEvent) {
+    onMouseMove(event: MouseEvent) {
         const targetComponents = this.componentManager.list.filter(component => component.onMouseMove)
         targetComponents.forEach(component => {
             if (component.onMouseMove) {
                 component.onMouseMove({
-                    clientX: event.data.global.x
+                    clientX: event.clientX
                 })
             }
         })

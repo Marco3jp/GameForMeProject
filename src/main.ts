@@ -72,7 +72,7 @@ export function main(): MatterComponents | null {
     })
 
     new Input({
-        componentManager: componentManager, stage: pixiApp.stage
+        componentManager: componentManager, canvas: matterComponents.canvas
     })
 
     const mouse = Mouse.create(render.canvas)
