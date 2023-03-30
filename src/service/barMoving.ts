@@ -6,6 +6,8 @@ import {WALL_THICKNESS} from "../component/stage/simpleStage/simpleStage";
 import Matter from "matter-js";
 
 export class BarMoving implements BarMovingInterface{
+    // 引数のmouseMovingはdocument.bodyに対するイベント
+    // もし後々バーを動かすのに必要な情報（ステージの位置とか）が必要であれば引っ張ってくる感じにする（多分そのときはcomponentって引数名はやめてbarとかに変える）
     move(component: Bar, mouseMoving: onMouseMoveEvent): void {
         if (!component.instance || !component.matterInstance) return
 

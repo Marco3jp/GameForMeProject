@@ -14,8 +14,8 @@ export class Input {
     constructor(input: InputServiceInput) {
         this.componentManager = input.componentManager
 
-        input.canvas.addEventListener("mousemove", (e) => this.onMouseMove(e) )
-        window.document.addEventListener("keydown", (e) => this.onKeydown(e))
+        document.body.addEventListener("mousemove", (e) => this.onMouseMove(e))
+        document.body.addEventListener("keydown", (e) => this.onKeydown(e))
     }
 
     onMouseMove(event: MouseEvent) {
