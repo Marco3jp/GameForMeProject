@@ -10,20 +10,23 @@ type InputServiceInput = {
  */
 export class Input {
     componentManager: ComponentManagerInterface
+    canvas: HTMLCanvasElement
 
     constructor(input: InputServiceInput) {
         this.componentManager = input.componentManager
+        this.canvas = input.canvas
 
         document.body.addEventListener("mousemove", (e) => this.onMouseMove(e))
         document.body.addEventListener("keydown", (e) => this.onKeydown(e))
     }
 
     onMouseMove(event: MouseEvent) {
+        const canvasBoundingClientRect = this.canvas.getBoundingClientRect()
         const targetComponents = this.componentManager.list.filter(component => component.onMouseMove)
         targetComponents.forEach(component => {
             if (component.onMouseMove) {
                 component.onMouseMove({
-                    clientX: event.clientX
+                    clientX: event.clientX - canvasBoundingClientRect.x
                 })
             }
         })
