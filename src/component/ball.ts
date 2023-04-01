@@ -52,7 +52,7 @@ export class Ball implements Component {
         this.instance.setTransform(initial.X, initial.Y)
         this.instance.angle = initial.ANGLE
 
-        this.matterInstance = Bodies.circle(0, 0, initial.RADIUS)
+        this.matterInstance = Bodies.circle(initial.X, initial.Y, initial.RADIUS)
         Body.setAngle(this.matterInstance, calculateDegreesToRadians(initial.ANGLE))
         // なんかこれ叩くメソッド違いそう
         // Body.setAngularVelocity(this.matterInstance, calculateDegreesToRadians(initial.DIRECTION_OF_MOVEMENT))
