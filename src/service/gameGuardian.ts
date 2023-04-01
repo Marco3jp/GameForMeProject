@@ -1,15 +1,18 @@
 import * as PIXI from "pixi.js";
 import {numberPadding} from "../lib/utils";
+import {Runner} from "matter-js";
 
 // 試合を見守るサービス
 // GameMasterと似ているがこちらのサービスはゲームの中身には干渉せず、一時停止とか再開を担う
 export class GameGuardian {
-    public static pause() {
+    public static pause(runner: Runner) {
         PIXI.Ticker.shared.stop()
+        runner.enabled = false;
     }
 
-    public static resume() {
+    public static resume(runner: Runner) {
         PIXI.Ticker.shared.start()
+        runner.enabled = true;
     }
 
     /**

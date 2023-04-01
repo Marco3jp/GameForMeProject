@@ -99,16 +99,16 @@ export function main(): MatterComponents | null {
     return matterComponents
 }
 
-function initGameGuardian() {
+function initGameGuardian(matterComponents: MatterComponents) {
     const pauseButton = document.querySelector("#pause-button")
     const resumeButton = document.querySelector("#resume-button")
 
     if (pauseButton) {
-        pauseButton.addEventListener("click", GameGuardian.pause)
+        pauseButton.addEventListener("click", () => GameGuardian.pause(matterComponents.runner))
     }
 
     if (resumeButton) {
-        resumeButton.addEventListener("click", GameGuardian.resume)
+        resumeButton.addEventListener("click", () => GameGuardian.resume(matterComponents.runner))
     }
 }
 
@@ -158,5 +158,7 @@ function initMatter(): MatterComponents | null {
     };
 }
 
-main()
-initGameGuardian()
+const matterComponents = main()
+if (matterComponents){
+    initGameGuardian(matterComponents)
+}
