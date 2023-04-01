@@ -3,7 +3,7 @@ import {INITIAL_BLOCK_SPAWN, initial_block_spawn} from "./parameter/blockSpawn";
 import {INITIAL_BLOCK} from "./parameter/block";
 import * as PIXI from "pixi.js";
 import {Block} from "../component/block";
-import {CANVAS_PADDING, STAGE_SIZE, WALL_THICKNESS} from "../component/stage/simpleStage/simpleStage";
+import {STAGE_SIZE, WALL_THICKNESS} from "../component/stage/simpleStage/simpleStage";
 
 export class BlockSpawn {
     stageMargin: {
@@ -63,7 +63,7 @@ export class BlockSpawn {
         const blockWidth = (waveWidth - (blockMarginCount * this.blockMargin.x)) / this.blockNumberInWave
 
         const blocks: Block[] = []
-        let blockXCoord = CANVAS_PADDING.X + WALL_THICKNESS + this.stageMargin.x;
+        let blockXCoord = WALL_THICKNESS + this.stageMargin.x;
 
         for (let i = 0; i < this.blockNumberInWave; i++) {
             const block = new Block(this.service, {

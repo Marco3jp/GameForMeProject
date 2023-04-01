@@ -4,11 +4,14 @@ import {initial_bar, INITIAL_BAR} from "../service/parameter/bar";
 import {Component, ComponentName} from "./component";
 import {Service} from "./service/service";
 import {onMouseMoveEvent} from "./service/input";
+import {Bodies, Body} from "matter-js";
+import {calculateDegreesToRadians} from "../lib/formula";
 
 export const BarComponentName: ComponentName = "Bar"
 
 export class Bar implements Component{
     instance: Graphics
+    matterInstance: Body
 
     componentName: ComponentName
 
@@ -30,6 +33,11 @@ export class Bar implements Component{
         this.instance.setTransform(initial.X, initial.Y)
         this.instance.angle = initial.ANGLE
 
+        this.matterInstance = Bodies.rectangle(initial.X + initial.WIDTH / 2, initial.Y, initial.WIDTH, initial.HEIGHT, {
+            isStatic: true
+        })
+        Body.setAngle(this.matterInstance, calculateDegreesToRadians(initial.ANGLE))
+
         this.componentName = BarComponentName
 
         this.isBlockBreaker = false
@@ -43,5 +51,11 @@ export class Bar implements Component{
 
     onMouseMove(event: onMouseMoveEvent) {
         this.service.barMoving.move(this, event)
+    }
+
+    public getWidth(): number {
+        const matterBounds = this.matterInstance.bounds
+        return matterBounds.max.x - matterBounds.min.x
+
     }
 }
